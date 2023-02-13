@@ -7,7 +7,6 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 app.get("/", function(req, res) {
-    // res.send("iam cherry!!!");
     res.sendFile(__dirname + "/resume.html");
 });
 app.listen(port, function() {
