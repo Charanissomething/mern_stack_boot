@@ -18,13 +18,6 @@ app.get("/card", function(req, res) {
     // res.send("iam cherry!!!");
     res.sendFile(__dirname + "/card.html");
 });
-// app.get('/getAllUsers', function(req, res) {
-//     userlib.getAllUsers(function(err, result) {
-//         if (err) console.log(err);
-//         else res.send(result);
-//     })
-// });
-
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
     if (err) {
