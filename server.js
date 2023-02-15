@@ -2,11 +2,11 @@ const exp = require('express');
 const app = exp();
 const port = process.env.PORT || 5010;
 
-const options = {
-    extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg', 'pdf'],
-    index: ['index.html'],
-}
-app.use(exp.static("public", options));
+// const options = {
+//     extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg', 'pdf'],
+//     index: ['index.html'],
+// }
+// app.use(exp.static("public", options));
 
 app.get("/", function(req, res) {
     // res.send("iam cherry!!!");
