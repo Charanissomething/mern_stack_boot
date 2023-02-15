@@ -1,12 +1,10 @@
+require("dotenv").config();
+const userlib = require("./backend/lib/userLib");
 const exp = require('express');
-const app = exp();
-const port = process.env.PORT || 5010;
+const mongoose = require("mongoose");
 
-// const options = {
-//     extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg', 'pdf'],
-//     index: ['index.html'],
-// }
-// app.use(exp.static("public", options));
+const app = exp();
+const port = process.env.PORT || 5050;
 
 app.get("/", function(req, res) {
     // res.send("iam cherry!!!");
@@ -20,6 +18,20 @@ app.get("/card", function(req, res) {
     // res.send("iam cherry!!!");
     res.sendFile(__dirname + "/card.html");
 });
-app.listen(port, function() {
-    console.log("server running on http://localhost:" + port);
+mongoose.set('strictQuery', true);
+mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log("db connected");
+        userlib.createFirstUser(function(err, res) {
+            if (err) {
+                console.error(err);
+            } else console.log(res);
+        });
+        app.listen(port, function() {
+            console.log("Server running on http://localhost:" + port);
+            console.log(`Server running on http://localhost:${port}`);
+        });
+    }
 });
