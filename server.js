@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
         console.log("db connected");
         userlib.createFirstUser(function(err, res) {
             if (err) {
-                console.error(err);
+                // console.error(err);
             } else console.log(res);
         });
         app.listen(port, function() {
