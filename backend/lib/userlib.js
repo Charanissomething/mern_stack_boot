@@ -2,7 +2,7 @@ const usermodel = require("../models/usermodel")
 
 module.exports.getAllUsers = async function(callback) {
     try {
-        var users = usermodel.find({});
+        var users = await usermodel.find({});
         callback(null, users)
     } catch (err) {
         callback(err, null)
