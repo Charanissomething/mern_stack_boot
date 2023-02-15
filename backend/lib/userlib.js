@@ -22,3 +22,5 @@ module.exports.createFirstUser = async function(callback) {
         callback(err, null)
     }
 }
+
+module.exports.get
