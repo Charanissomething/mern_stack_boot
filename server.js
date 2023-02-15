@@ -16,7 +16,7 @@ app.get("/resume", function(req, res) {
     // res.send("iam cherry!!!");
     res.sendFile(__dirname + "/resume.html");
 });
-app.get("/resume", function(req, res) {
+app.get("/card", function(req, res) {
     // res.send("iam cherry!!!");
     res.sendFile(__dirname + "/card.html");
 });
