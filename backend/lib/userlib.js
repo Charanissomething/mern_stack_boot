@@ -26,10 +26,10 @@ module.exports.createFirstUser = async function(callback) {
 module.exports.updateUser = async function(callback) {
     try {
         var query = {
-            username: "sai",
+            username: "sai charan",
         };
         var data = {
-            yearOfGraduation: 2090,
+            yearOfGraduation: 2050,
         }
         var result = await usermodel.updateOne(query, data);
         callback(null, result);
@@ -37,23 +37,45 @@ module.exports.updateUser = async function(callback) {
         callback(err, null);
     }
 }
-
-module.exports.deleteUser = async function(username, callback) {
+module.exports.getSingleUser = async function(filterQuery, callBack) {
     try {
-        var query = {
-            username: username,
-        };
-        var result = await usermodel.deleteOne(query, data);
-        callback(null, result);
+        var user = await userModel.findOne(filterQuery);
+        if (!user)
+            callBack("User not found", null);
+        else
+            callBack(null, user);
     } catch (err) {
-        callback(err, null);
+        callBack(err, null);
     }
 }
-module.exports.getUserByName = async function(filter, callback) {
+module.exports.deleteSingleUser = async function(filterQuery, callBack) {
     try {
-        var user = await usermodel.find(filter);
-        callback(err, user);
+        let user = await userModel.findOne(filterQuery);
+
+        if (!user) {
+            callBack("No user exist with query", null);
+            return;
+        }
+
+        let modifiedUser = await userModel.findOneAndUpdate(filterQuery, { isDeleted: true }, { new: true });
+        callBack(null, modifiedUser);
     } catch (err) {
-        callback(err, null);
+        callBack(err, null);
+    }
+};
+module.exports.createAUser = async function(user, callBack) {
+    try {
+        let isUserExist = await userModel.findOne(user);
+
+        if (isUserExist) {
+            callBack(`User with username ${user.username} Already exist `, null);
+        } else {
+            var newUser = new userModel(user);
+            var result = await newUser.save();
+
+            callBack(null, result);
+        }
+    } catch (err) {
+        callBack("Error: " + err, null);
     }
 }
