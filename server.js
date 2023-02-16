@@ -24,20 +24,32 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
         console.error(err);
     } else {
         console.log("db connected");
-        userlib.getAllUsers(function(err, res) {
-            if (err) {
-                console.error(err);
-            } else console.log(res);
-        });
-        userlib.createFirstUser(function(err, res) {
-            if (err) {
-                console.error(err);
-            } else console.log(res);
-        });
-        userlib.updateUser(function(err, res) {
-            if (err) console.error(err);
-            else console.log(res);
-        });
+
+        // userlib.createAUser({
+        //     username: "Sandeep",
+        //     yearOfGraduation: 2020
+        // }, function(err, result) {
+        //     console.log(err ? err : result);
+        // });
+
+        // userlib.getAllUsers(function(err, res) {
+        //     if (err) {
+        //         console.error(err);
+        //     } else console.log(res);
+        // });
+
+        // userlib.deleteSingleUser({ username: "sai" }, (err, result) => {
+        //     console.log(err ? err : result);
+        // });
+        // userlib.createFirstUser(function(err, res) {
+        //     if (err) {
+        //         console.error(err);
+        //     } else console.log(res);
+        // });
+        // userlib.updateUser(function(err, res) {
+        //     if (err) console.error(err);
+        //     else console.log(res);
+        // });
         app.listen(port, function() {
             console.log("Server running on http://localhost:" + port);
             console.log(`Server running on http://localhost:${port}`);

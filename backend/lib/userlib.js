@@ -12,8 +12,8 @@ module.exports.getAllUsers = async function(callback) {
 module.exports.createFirstUser = async function(callback) {
     try {
         var user = {
-            username: "sai",
-            yearOfGraduation: 2023,
+            username: "manga",
+            yearOfGraduation: 2027,
         };
         var newUser = new usermodel(user);
         var result = await newUser.save();
@@ -26,7 +26,7 @@ module.exports.createFirstUser = async function(callback) {
 module.exports.updateUser = async function(callback) {
     try {
         var query = {
-            username: "sai charan",
+            username: "saicharan",
         };
         var data = {
             yearOfGraduation: 2050,
@@ -50,14 +50,14 @@ module.exports.getSingleUser = async function(filterQuery, callBack) {
 }
 module.exports.deleteSingleUser = async function(filterQuery, callBack) {
     try {
-        let user = await userModel.findOne(filterQuery);
+        let user = await usermodel.findOne(filterQuery);
 
         if (!user) {
             callBack("No user exist with query", null);
             return;
         }
 
-        let modifiedUser = await userModel.findOneAndUpdate(filterQuery, { isDeleted: true }, { new: true });
+        let modifiedUser = await usermodel.findOneAndUpdate(filterQuery, { isDeleted: true }, { new: true });
         callBack(null, modifiedUser);
     } catch (err) {
         callBack(err, null);
@@ -65,12 +65,12 @@ module.exports.deleteSingleUser = async function(filterQuery, callBack) {
 };
 module.exports.createAUser = async function(user, callBack) {
     try {
-        let isUserExist = await userModel.findOne(user);
+        let isUserExist = await usermodel.findOne(user);
 
         if (isUserExist) {
             callBack(`User with username ${user.username} Already exist `, null);
         } else {
-            var newUser = new userModel(user);
+            var newUser = new usermodel(user);
             var result = await newUser.save();
 
             callBack(null, result);
