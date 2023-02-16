@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
         console.error(err);
     } else {
         console.log("db connected");
-        userlib.createFirstUser(function(err, res) {
+        userlib.getAllUsers(function(err, res) {
             if (err) {
                 console.error(err);
             } else console.log(res);
