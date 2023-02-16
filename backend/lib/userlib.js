@@ -23,4 +23,37 @@ module.exports.createFirstUser = async function(callback) {
     }
 }
 
-module.exports.get
+module.exports.updateUser = async function(callback) {
+    try {
+        var query = {
+            username: "sai",
+        };
+        var data = {
+            yearOfGraduation: 2090,
+        }
+        var result = await usermodel.updateOne(query, data);
+        callback(null, result);
+    } catch (err) {
+        callback(err, null);
+    }
+}
+
+module.exports.deleteUser = async function(username, callback) {
+    try {
+        var query = {
+            username: username,
+        };
+        var result = await usermodel.deleteOne(query, data);
+        callback(null, result);
+    } catch (err) {
+        callback(err, null);
+    }
+}
+module.exports.getUserByName = async function(filter, callback) {
+    try {
+        var user = await usermodel.find(filter);
+        callback(err, user);
+    } catch (err) {
+        callback(err, null);
+    }
+}
