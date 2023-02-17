@@ -5,11 +5,11 @@ const mongoose = require("mongoose");
 
 const app = exp();
 
-app.use(express.static("public", options));
 const options = {
     extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg'],
     index: ['index.html'],
 }
+app.use(exp.static("public", options));
 const port = process.env.PORT || 5010;
 
 app.get("/", function(req, res) {
