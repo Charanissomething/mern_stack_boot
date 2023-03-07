@@ -1,7 +1,7 @@
 require("dotenv").config();
 
-import { config } from "dotenv";
-config();
+// import { config } from "dotenv";
+// config();
 //const userlib = require("./backend/lib/userlib");
 import userLib from "./backend/lib/userlib.js";
 
