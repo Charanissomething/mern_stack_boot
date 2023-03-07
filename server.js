@@ -16,7 +16,8 @@ const options = {
     extensions: ['htm', 'html', 'css', 'js', 'ico', 'jpg', 'jpeg', 'png', 'svg'],
     index: ['index.html'],
 }
-app.use(exp.static("public", options));
+app.use(exp.static(__dirname));
+
 const port = process.env.PORT || 5010;
 
 app.get("/", function(req, res) {
