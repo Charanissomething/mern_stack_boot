@@ -49,7 +49,7 @@ export async function getSingleUser(filterQuery, callBack) {
         callBack(err, null);
     }
 }
-export async function deleteSingleUser = async function(filterQuery, callBack) {
+export async function deleteSingleUser(filterQuery, callBack) {
     try {
         let user = await usermodel.findOne(filterQuery);
 
@@ -64,19 +64,19 @@ export async function deleteSingleUser = async function(filterQuery, callBack) {
         callBack(err, null);
     }
 };
-export async createAUser = async function(user, callBack) {
-    try {
-        let isUserExist = await usermodel.findOne(user);
+// export async createAUser(user, callBack) {
+//     try {
+//         let isUserExist = await usermodel.findOne(user);
 
-        if (isUserExist) {
-            callBack(`User with username ${user.username} Already exist `, null);
-        } else {
-            var newUser = new usermodel(user);
-            var result = await newUser.save();
+//         if (isUserExist) {
+//             callBack(`User with username ${user.username} Already exist `, null);
+//         } else {
+//             var newUser = new usermodel(user);
+//             var result = await newUser.save();
 
-            callBack(null, result);
-        }
-    } catch (err) {
-        callBack("Error: " + err, null);
-    }
-}
+//             callBack(null, result);
+//         }
+//     } catch (err) {
+//         callBack("Error: " + err, null);
+//     }
+// }
