@@ -72,13 +72,13 @@ mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
         //     if (err) console.error(err);
         //     else console.log(res);
         // });
-        todolib.createatodoUser(function(err, res) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(res);
-            }
-        });
+        // todolib.createatodoUser(function(err, res) {
+        //     if (err) {
+        //         console.log(err);
+        //     } else {
+        //         console.log(res);
+        //     }
+        // });
         app.listen(port, function() {
             console.log("Server running on http://localhost:" + port);
             console.log(`Server running on http://localhost:${port}`);
