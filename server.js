@@ -5,7 +5,7 @@ config();
 //const userlib = require("./backend/lib/userlib");
 import userLib from "./backend/lib/userlib.js";
 
-const todolib = require("./backend/lib/todolib");
+// const todolib = require("./backend/lib/todolib");
 const exp = require('express');
 const mongoose = require("mongoose");
 const { response } = require("express");
@@ -35,11 +35,11 @@ app.get("/weather", function(req, res) {
     // res.send("iam cherry!!!");
     res.sendFile(__dirname + "/weather.html");
 });
-app.post("/api/createtodo", (req, res) => {
-    todolib.createatodoUser(req.body, (err, result) => {
-        res.send(err ? err : result);
-    });
-});
+// app.post("/api/createtodo", (req, res) => {
+//     todolib.createatodoUser(req.body, (err, result) => {
+//         res.send(err ? err : result);
+//     });
+// });
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_CONNECTION_STRING, {}, function(err) {
     if (err) {
