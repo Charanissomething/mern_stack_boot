@@ -3,7 +3,7 @@ require("dotenv").config();
 // import { config } from "dotenv";
 // config();
 //const userlib = require("./backend/lib/userlib");
-import userLib from "./backend/lib/userlib.js";
+const userLib = require("./backend/lib/userlib.js");
 
 // const todolib = require("./backend/lib/todolib");
 const exp = require('express');
