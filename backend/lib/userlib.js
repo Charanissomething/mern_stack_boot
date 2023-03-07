@@ -1,7 +1,7 @@
-//const usermodel = require("../models/usermodel")
-import usermodel from "../models/usermodel.js";
+const usermodel = require("../models/usermodel")
+    // import usermodel from "../models/usermodel.js";
 
-export async function getAllUsers(callback) {
+module.exports.getAllUsers = async function(callback) {
     try {
         var users = await usermodel.find({});
         callback(null, users)
@@ -10,7 +10,7 @@ export async function getAllUsers(callback) {
     }
 }
 
-export async function createFirstUser(callback) {
+module.exports.createFirstUser = async function(callback) {
     try {
         var user = {
             username: "manga",
@@ -24,7 +24,7 @@ export async function createFirstUser(callback) {
     }
 }
 
-export async function updateUser(callback) {
+module.exports.updateUser = async function(callback) {
     try {
         var query = {
             username: "saicharan",
@@ -38,7 +38,7 @@ export async function updateUser(callback) {
         callback(err, null);
     }
 }
-export async function getSingleUser(filterQuery, callBack) {
+module.exports.getSingleUser = async function(filterQuery, callBack) {
     try {
         var user = await userModel.findOne(filterQuery);
         if (!user)
@@ -49,7 +49,7 @@ export async function getSingleUser(filterQuery, callBack) {
         callBack(err, null);
     }
 }
-export async function deleteSingleUser(filterQuery, callBack) {
+module.exports.deleteSingleUser = async function(filterQuery, callBack) {
     try {
         let user = await usermodel.findOne(filterQuery);
 
